@@ -1,0 +1,133 @@
+﻿html {
+    font-size: 14px;
+    font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    background-color: #EBE9E9;
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+}
+
+li.nav-item a:hover {
+    background-color: #3581B8;
+}
+
+footer {
+    background-color: white;
+    height: 5vh;
+}
+
+footer.container {
+    color:black;
+}
+
+.main {
+    margin: 0px;
+    padding: 0px;
+    float: inline-start;
+}
+
+div.dataTables_filter, div.dataTables_lengthm, .dataTables_wrapper {
+    padding: 5px;
+}
+
+.header {
+    margin: 0px;
+    padding: 0px;
+}
+    .header h1, .header h2, .header h3, .header h4, .header h5 {
+        margin: 0px;
+        padding: 0px;
+        color: black;
+        font-family: Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    }
+
+.filter-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    background-color: #6497b1;
+    color: #fff;
+    padding: 10px 20px; /* Increased padding for better visibility */
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.filter-group {
+    font: 12px/20px  Calibri, 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    border-radius: 3px;
+    width: auto; /* Let the width adjust automatically based on content */
+    color: #333; /* Changed text color for better readability */
+    display: none; /* Initially hide */
+    overflow-y: auto; /* Add vertical scroll when necessary */
+    max-height: 500px; /* Adjusted maximum height */
+    background-color: #fff; /* Added background color */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+}
+    .filter-group label {
+        display: block;
+        padding: 10px 20px; /* Increased padding for better spacing */
+        cursor: pointer;
+        border-bottom: 1px solid #eee; /* Added border between items */
+    }
+
+    .filter-group input[type='checkbox']:first-child + label {
+        border-radius: 3px 3px 0 0;
+    }
+
+    .filter-group label:last-child {
+        border-bottom: none; /* Removed border from last item */
+        border-radius: 0 0 3px 3px;
+    }
+
+    .filter-group input[type='checkbox'] {
+        display: none;
+    }
+
+        .filter-group input[type='checkbox'] + label {
+            background-color: #3386c0;
+            display: block;
+            cursor: pointer;
+            padding: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+        }
+
+        .filter-group input[type='checkbox'] + label {
+            background-color: #6497b1;
+            text-transform: capitalize;
+        }
+
+            .filter-group input[type='checkbox'] + label:hover,
+            .filter-group input[type='checkbox']:checked + label {
+                 /* Changed background color on hover/checked */
+            }
+
+                .filter-group input[type='checkbox']:checked + label:before {
+                    content: '✔';
+                    color: white;
+                    margin-right: 5px;
+                }

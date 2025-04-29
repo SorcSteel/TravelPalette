@@ -1,0 +1,94 @@
+﻿@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TravelPalette</title>
+
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" asp-append-version="true" />
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.js"></script>
+        <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.1.0/mapbox-gl.css"
+          rel="stylesheet" />
+         
+</head>
+<body>
+    <header>
+        <div class="login">
+            @{
+                TravelPalette.BL.UserManager.Seed();  // calling the seed
+                var FullName = HttpContextAccessor.HttpContext?.Session.GetString("FullName");
+                bool logoutHidden = true;
+                bool loginHidden = false;
+                if (FullName != null)
+                {
+                    FullName = FullName.Replace("\"", "");    //string manipulation
+                    if (FullName != string.Empty ? logoutHidden = false : logoutHidden = true) ; // If theres no name then Logout will be hidden
+                    loginHidden = !logoutHidden;                                                // Login and create account will show based on if Logout is hidden
+                }
+            }
+            <div id="logo">
+                <img src="~/img/logo.png" width="65px" height="65px"/>
+            </div>
+            <div id="username">
+                <ul>
+                    <li class="nav-item">
+                        <a asp-area="" asp-controller="User" hidden="@loginHidden" asp-action="Create">Create Account</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="login">
+                <ul>
+                    <li class="nav-item">                        
+                        <a asp-area="" asp-controller="User" hidden="@loginHidden" asp-action="Login">Login</a>
+                        <a>@FullName</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="logout">
+                <ul>
+                    <li class="nav-item">
+                        <a asp-area="" asp-controller="User" hidden="@logoutHidden" asp-action="Logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="nav">
+            <nav>
+                <ul>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Shop">Shop</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Eat">Eat</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Travel Palette</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Stay">Stay</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Fun">Fun</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div>
+           <main>
+           <div class="text-danger m-2">@ViewBag.Error</div>
+            @RenderBody()
+           </main>
+
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - TravelPalette - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> <img id="icons" src="~/img/Icons.jpg" height="30px" />
+           
+        </div>
+        
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
